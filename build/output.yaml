@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: AWS Serverless Tutorial
+Resources:
+  MyFirstLambda:
+    Properties:
+      CodeUri: s3://serverless-tutorial-20180802/9c39b12157c1d1abf347dc1b28d7a9d5
+      Events:
+        MyFirstEndpoint:
+          Properties:
+            Method: get
+            Path: /mydemo
+          Type: Api
+      FunctionName: MyFirstLambda
+      Handler: index.handler
+      MemorySize: 128
+      Policies:
+      - AWSLambdaBasicExecutionRole
+      Runtime: nodejs6.10
+      Timeout: 30
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
